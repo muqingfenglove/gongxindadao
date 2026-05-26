@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南昌龙门吊监控中心</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(56, 189, 248, 0.1);
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #f1f5f9;
+        }
+        .card .status {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        .status.online {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+        .card .desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .timestamp {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.8rem; }
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏗️ 南昌龙门吊监控中心</h1>
+        <p>智慧工地可视化平台 · 实时监控</p>
+        <div class="timestamp" id="timestamp"></div>
+    </div>
+
+    <div class="container">
+        <a class="card" href="https://iot.aqjkpt.com/overview?token=ee2ed19fea5de4e20e980e125bd64368" target="_blank" rel="noopener">
+            <div class="icon">🚢</div>
+            <h2>南昌龙门吊1</h2>
+            <span class="status online">● 在线监控</span>
+            <div class="desc">点击查看设备运行状态、报警信息及实时数据</div>
+        </a>
+
+        <a class="card" href="https://iot.aqjkpt.com/overview?token=081da8f1c128fdf67c96941ceaf6f826" target="_blank" rel="noopener">
+            <div class="icon">🚢</div>
+            <h2>南昌龙门吊2</h2>
+            <span class="status online">● 在线监控</span>
+            <div class="desc">点击查看设备运行状态、报警信息及实时数据</div>
+        </a>
+
+        <a class="card" href="https://iot.aqjkpt.com/overview?token=b64c913107a6cadb1cb2fb4998a96382" target="_blank" rel="noopener">
+            <div class="icon">🚢</div>
+            <h2>南昌龙门吊3</h2>
+            <span class="status online">● 在线监控</span>
+            <div class="desc">点击查看设备运行状态、报警信息及实时数据</div>
+        </a>
+
+        <a class="card" href="https://iot.aqjkpt.com/overview?token=6b2e7c622760deedb3d354e6eeaeb10c" target="_blank" rel="noopener">
+            <div class="icon">🚢</div>
+            <h2>南昌龙门吊4</h2>
+            <span class="status online">● 在线监控</span>
+            <div class="desc">点击查看设备运行状态、报警信息及实时数据</div>
+        </a>
+    </div>
+
+    <div class="footer">
+        数据来源：智慧工地可视化平台 (iot.aqjkpt.com)
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const str = now.toLocaleString('zh-CN', {
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+            document.getElementById('timestamp').textContent = '当前时间：' + str;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
